@@ -1,0 +1,3 @@
+#+title: Partial Clone
+
+Clone a single directory or file from a Git repository.
