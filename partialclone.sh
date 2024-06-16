@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # partialclone.sh - Clone a single directory or file from a Git repository.
 # Copyright (C) 2024 tusharhero
 
@@ -19,11 +19,17 @@ giturl=$1
 content=$2
 cachedir="${XDG_CACHE_HOME:-~/.cache}/partialclone"
 
-namespace=$(awk -F '/' '{ print $(NF-1) }' <<< "$giturl")
-repository=$(awk -F '/' '{ print $(NF) }' <<< "$giturl")
+namespace=$(echo "$giturl" | awk -F '/' '{ print $(NF-1) }')
+repository=$(echo "$giturl" | awk -F '/' '{ print $(NF) }')
 cacherepo="$cachedir/$namespace/$repository"
 echo mkdir "$cacherepo" -p
 
-[[ -d "$cacherepo/.git" ]] &&  git pull "$cacherepo" ||  git clone "$giturl" "$cacherepo"
+
+if [ -d "$cacherepo/.git" ]
+then
+    git pull "$cacherepo"
+else
+    git clone "$giturl" "$cacherepo"
+fi
 
 cp "$cacherepo/$content" . -r
