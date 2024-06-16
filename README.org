@@ -1,3 +1,7 @@
 #+title: Partial Clone
 
 Clone a single directory or file from a Git repository.
+
+* Installation
+** Guix
+It is available on my Guix channel: [[https://codeberg.org/tusharhero/thgsc][thgsc]].
