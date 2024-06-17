@@ -29,7 +29,7 @@ if [ -d "$cacherepo/.git" ]
 then
     git pull "$cacherepo"
 else
-    git clone "$giturl" "$cacherepo"
+    git clone "$giturl" "$cacherepo" --depth 1
 fi
 
 cp "$cacherepo/$content" . -r
