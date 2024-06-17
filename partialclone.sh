@@ -22,7 +22,7 @@ cachedir="${XDG_CACHE_HOME:-~/.cache}/partialclone"
 namespace=$(echo "$giturl" | awk -F '/' '{ print $(NF-1) }')
 repository=$(echo "$giturl" | awk -F '/' '{ print $(NF) }')
 cacherepo="$cachedir/$namespace/$repository"
-echo mkdir "$cacherepo" -p
+mkdir "$cacherepo" -p
 
 
 if [ -d "$cacherepo/.git" ]
