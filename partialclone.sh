@@ -19,6 +19,7 @@ giturl=$1
 content=$2
 
 cachedir="${XDG_CACHE_HOME:-$HOME/.cache}/partialclone"
+cachedir="${PARTIALCLONE_CACHE:-$cachedir}"
 
 namespace=$(echo "$giturl" | awk -F '/' '{ print $(NF-1) }')
 repository=$(echo "$giturl" | awk -F '/' '{ print $(NF) }')
