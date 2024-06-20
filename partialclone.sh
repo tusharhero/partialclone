@@ -32,10 +32,10 @@ else
 fi
 
 cacherepo="$cachedir/$namespace/$repository"
+branch='main'
 
-if [ -d "$cacherepo/.git" ]
-then
-    git pull "$cacherepo"
+if [ -d "$cacherepo/.git" ]; then
+    cd "$cacherepo" && git checkout "$branch" && git pull origin "$branch"
 else
     git clone --depth 1 "$giturl" "$cacherepo"
 fi
